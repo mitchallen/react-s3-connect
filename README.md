@@ -30,7 +30,97 @@ S3 Connect
 
 ## Usage
 
-TODO
+In this example use S3Connect to get a file from S3.
+
+__NOTE:__ it is *important* that you put the __await__ statement before the S3Connect call.
+
+```
+import S3Connect from '@mitchallen/react-s3-connect';
+
+export default async function s3GetTextFile( params ) {
+
+    const s3 = await S3Connect( params );
+
+    let { file, bucket } = params;
+          
+    return s3.getObject({
+        Bucket: bucket,
+        Key: file
+    })
+    .promise()
+    .then( (data) => data.Body.toString('utf-8') );
+}
+```
+
+Below is an example of how to call the method above.
+
+__NOTE:__ it is important that you only have one instance of __authUser__ in your app.
+
+See: [@mitchallen/react-cognito-auth-user](https://www.npmjs.com/package/@mitchallen/react-cognito-auth-user)
+
+
+```
+import AWS from "aws-sdk";
+import authUser from "@mitchallen/react-cognito-auth-user";
+const testFile = 'cognito/private/demo.txt';
+
+s3GetTextFile({ 
+    AWS: AWS,
+    authUser: authUser,
+    bucket: BUCKET,
+    file: testFile, 
+    userPoolId: COGNITO_USER_POOL_ID,
+    clientId: COGNITO_APP_CLIENT_ID,
+    region: COGNITO_REGION, 
+    identyPoolId: COGNITO_IDENTITY_POOL_ID
+})
+.then((data) => {
+    alert(data);
+})
+.catch(function(err) {
+    alert(err);
+});
+```
+
+* * *
+
+## Example Cognito Bucket Policy
+
+This is an example of how to restrict an S3 bucket to users from a Cognito pool.
+
+Edit for your account #, Cognito roles and operations that you plan to support.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::123456789012:role/Cognito_YOURidentitypoolAuth_Role"
+            },
+            "Action": "s3:ListBucket",
+            "Resource": "arn:aws:s3:::my-bucket",
+            "Condition": {
+                "StringLike": {
+                    "s3:prefix": "cognito/private/"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::123456789012:role/Cognito_YOURidentitypoolAuth_Role"
+            },
+            "Action": "s3:GetObject",
+            "Resource": [
+                "arn:aws:s3:::my-bucket/cognito/private",
+                "arn:aws:s3:::my-bucket/cognito/private/*"
+            ]
+        }
+    ]
+}
+```
 
 * * *
 
