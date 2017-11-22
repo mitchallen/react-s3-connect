@@ -3,11 +3,11 @@
     Author: Mitch Allen
 */
 
-import authUser from "@mitchallen/react-cognito-auth-user";
+// import authUser from "@mitchallen/react-cognito-auth-user";
 
-export default async function s3Connect( params ) {
+export default async function S3Connect( params ) {
 
-    let { AWS, file, bucket, ...rest } = params;
+    let { AWS, authUser, file, bucket, ...rest } = params;
     
     let awsConfig = AWS.config;
 

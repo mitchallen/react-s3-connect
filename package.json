@@ -23,7 +23,6 @@
     "react": ">=15.5.4"
   },
   "dependencies": {
-    "@mitchallen/react-cognito-auth-user": "^0.1.2",
     "babel-cli": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "cross-env": "^5.0.5",
