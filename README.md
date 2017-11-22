@@ -1,6 +1,6 @@
 @mitchallen/react-s3-connect
 ==
-S3Connect React component
+S3 Connect 
 --
 
 <p align="left">
@@ -30,86 +30,10 @@ S3Connect React component
 
 ## Usage
 
-1: Add this line near the top of your file (like ```src/App.js```):
-
-```
-import S3Connect from '@mitchallen/react-s3-connect';
-```
-
-__NOTE:__ S3Connect must be Capitalized or component won't render.
-
-2: Somewhere in the middle of the __render__ method add this line:
-
-```
-<S3Connect />
-```
-
+TODO
 
 * * *
 
-## Testing
-
-### Run the Tests
-
-To test, go to the root folder and type (sans __$__):
-
-    $ npm test
-    
-## Component Testing
-
-### Prerequisite
-
-If you've never installed __create-react-app__ (you may need to use ```sudo```):
-
-```
-$ npm install -g create-react-app
-```
-
-### Create a local npm link
-
-In the original component folder (you may need to use ```sudo```):
-
-```
-$ npm link
-```
-
-### Create a test package
-
-Create a root test folder and then do the following:
-
-```
-$ create-react-app react-s3-connect-test
-$ cd react-s3-connect-test
-$ npm link @mitchallen/react-s3-connect
-```
-
-### Modify src/App.js
-
-1: Add this line near the top:
-
-```
-import S3Connect from '@mitchallen/react-s3-connect';
-```
-
-__NOTE:__ S3Connect must be Capitalized or component won't render.
-
-2: Somewhere in the middle of the __render__ method add this line:
-
-```
-<S3Connect />
-```
-
-### Run The Test App
-
-```
-$ npm start
-```
-
-### Cleanup
-
-Remember to unlink when done.
-   
-* * *
  
 ## Repo(s)
 

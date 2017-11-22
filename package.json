@@ -1,7 +1,7 @@
 {
   "name": "@mitchallen/react-s3-connect",
   "version": "0.1.0",
-  "description": "S3Connect component",
+  "description": "S3 Connect",
   "main": "build/index.js",
   "scripts": {
     "pretest": "npm run build",
