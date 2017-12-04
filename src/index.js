@@ -7,9 +7,7 @@ export default async function S3Connect( params ) {
 
     let { AWS, authUser, bucket, ...rest } = params;
     
-    let awsConfig = AWS.config;
-
-    if (!await authUser( { awsConfig, ...rest } )) {
+    if (!await authUser( { AWS, ...rest } )) {
         throw new Error("User is not logged in");
     }
     
